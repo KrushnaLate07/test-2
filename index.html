@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="CSBT E-Sports Tournament - Register now for the biggest BGMI tournament. Win exciting prizes and showcase your gaming skills.">
+    <meta name="keywords" content="CSBT E-Sports, BGMI Tournament, Gaming Competition, E-Sports Registration, BGMI Gaming">
+    <meta name="author" content="CSBT E-Sports">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="CSBT E-Sports Tournament - BGMI Registration">
+    <meta property="og:description" content="Join the ultimate BGMI gaming tournament. Register your squad now and compete for massive prizes!">
+    <meta property="og:image" content="https://yourwebsite.com/images/tournament-banner.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CSBT E-Sports Tournament">
+    <meta name="twitter:description" content="Register for the ultimate BGMI gaming experience">
+    <meta name="twitter:image" content="https://yourwebsite.com/images/tournament-banner.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com">
+    
+    <title>CSBT E-Sports Tournament</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .input-field {
+            margin-bottom: 15px;
+        }
+        
+        input.error {
+            border: 1px solid red;
+        }
+
+        /* मोबाइल डिवाइसेस के लिए मीडिया क्वेरीज़ */
+        @media screen and (max-width: 768px) {
+            /* रजिस्ट्रेशन फॉर्म के लिए */
+            .registration-box {
+                padding: 15px;
+                margin: 10px 0;
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            .form-group input {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            /* प्लेयर इनफॉर्मेशन के लिए */
+            .player-fields {
+                flex-direction: column;
+            }
+
+            .input-group {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            /* मोडल्स के लिए */
+            .modal-content {
+                width: 95%;
+                margin: 10px auto;
+                padding: 15px;
+            }
+
+            .term-item {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+
+            .term-content h4 {
+                font-size: 15px;
+            }
+
+            .term-content p {
+                font-size: 14px;
+            }
+
+            /* स्क्रॉलबार स्टाइलिंग */
+            .modal-body::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            .modal-body::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .modal-body::-webkit-scrollbar-thumb {
+                background: #ffd700;
+                border-radius: 3px;
+            }
+
+            /* कॉन्टैक्ट सेक्शन के लिए */
+            .contact-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .contact-btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            /* हेडिंग्स के लिए */
+            h2 {
+                font-size: 24px;
+                margin: 15px 0;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            h4 {
+                font-size: 18px;
+            }
+
+            /* चेकबॉक्स ग्रुप के लिए */
+            .terms-section {
+                padding: 10px;
+            }
+
+            .checkbox-group {
+                margin: 10px 0;
+            }
+
+            /* सबमिट बटन के लिए */
+            button[type="submit"] {
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            /* नीड हेल्प सेक्शन के लिए अपडेटेड स्टाइल्स */
+            .need-help {
+                padding: 12px;
+                margin: 8px;
+            }
+
+            .need-help h3 {
+                font-size: 18px;
+                margin: 8px 0;
+            }
+
+            .contact-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+                margin: 4px 0;
+            }
+
+            .contact-btn i {
+                font-size: 16px;
+                margin-right: 8px;
+            }
+
+            .phone-input-container {
+                margin: 5px 0;
+            }
+
+            .section-spacing {
+                margin: 40px 0;
+            }
+
+            input[placeholder="Enter BGMI ID"] {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
+
+        /* छोटे मोबाइल डिवाइसेस के लिए एक्स्ट्रा एडजस्टमेंट्स */
+        @media screen and (max-width: 480px) {
+            .modal-content {
+                width: 95%;
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .modal-content h2 {
+                font-size: 18px;
+            }
+
+            .modal-content h3 {
+                font-size: 16px;
+            }
+
+            .term-content h4 {
+                font-size: 14px;
+            }
+
+            .rules-list li,
+            .awards-list li,
+            .term-content p {
+                font-size: 12px;
+            }
+
+            .term-number {
+                min-width: 20px;
+                height: 20px;
+                font-size: 11px;
+            }
+
+            .close {
+                font-size: 22px;
+            }
+
+            .player-info {
+                padding: 10px;
+            }
+
+            .rules-list li, 
+            .awards-list li {
+                font-size: 13px;
+                margin: 5px 0;
+            }
+
+            .term-content {
+                font-size: 14px;
+            }
+
+            .hero-content h1 {
+                font-size: 24px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            /* बैकग्राउंड वीडियो एडजस्टमेंट */
+            .registration-video-background {
+                height: 100%;
+                position: fixed;
+            }
+
+            .video-overlay {
+                background: rgba(0, 0, 0, 0.6); /* डार्कर ओवरले */
+            }
+
+            .need-help {
+                padding: 10px;
+                margin: 6px;
+            }
+
+            .need-help h3 {
+                font-size: 16px;
+                margin: 6px 0;
+            }
+
+            .contact-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+                margin: 3px 0;
+            }
+
+            .contact-btn i {
+                font-size: 15px;
+                margin-right: 6px;
+            }
+
+            .section-spacing {
+                margin: 30px 0;
+            }
+        }
+
+        /* मोडल स्टाइल्स - मुख्य स्टाइल्स को मीडिया क्वेरी से पहले रखें */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: none;
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            color: #fff;
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .modal-body {
+            padding: 15px;
+            max-height: 75vh;
+            overflow-y: auto;
+        }
+
+        .term-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .term-number {
+            background-color: #ffd700;
+            color: #000;
+            min-width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .term-content {
+            flex: 1;
+            min-width: 0;
+            width: calc(100% - 40px); /* नंबर के लिए स्पेस छोड़कर बाकी पूरी विड्थ */
+        }
+
+        .term-content h4 {
+            color: #ffd700;
+            font-size: 16px;
+            margin-bottom: 8px;
+            word-wrap: break-word;
+        }
+
+        .term-content p {
+            margin: 0;
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal; /* टेक्स्ट को नई लाइन में जाने दें */
+            width: 100%;
+        }
+
+        .rules-list li, 
+        .awards-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .close {
+            position: sticky;
+            top: 10px;
+            right: 10px;
+            float: right;
+            color: #ffd700;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .numbered-list {
+            width: 100%;
+            padding-right: 15px; /* स्क्रॉलबार के लिए स्पेस */
+        }
+
+        #formErrorMessage {
+            color: #ff4444;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: rgba(255, 68, 68, 0.1);
+            margin: 15px 0;
+        }
+
+        .phone-input-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .phone-prefix {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffd700;
+            font-weight: 500;
+            z-index: 1;
+        }
+
+        .phone-input-container input[type="tel"] {
+            padding-left: 45px !important;
+            width: 100%;
+        }
+
+        .email-input-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .email-input-container .error-message {
+            display: none;
+            color: #ff4444;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .email-input-container input.error {
+            border-color: #ff4444;
+        }
+
+        .contact-btn {
+            /* मौजूदा स्टाइल्स रहेंगे */
+            transition: all 0.3s ease;
+        }
+
+        /* टेलीग्राम बटन */
+        .contact-btn.telegram {
+            background: linear-gradient(45deg, #0088cc, #00a2ff);
+            border: none;
+        }
+        .contact-btn.telegram:hover {
+            background: linear-gradient(45deg, #00a2ff, #0088cc);
+            transform: translateY(-2px);
+        }
+
+        /* ईमेल बटन */
+        .contact-btn.email {
+            background: linear-gradient(45deg, #ff4444, #ff6b6b);
+            border: none;
+        }
+        .contact-btn.email:hover {
+            background: linear-gradient(45deg, #ff6b6b, #ff4444);
+            transform: translateY(-2px);
+        }
+
+        /* इंस्टाग्राम बटन */
+        .contact-btn.instagram {
+            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+            border: none;
+        }
+        .contact-btn.instagram:hover {
+            background: linear-gradient(45deg, #fcb045, #fd1d1d, #833ab4);
+            transform: translateY(-2px);
+        }
+
+        /* यूट्यूब बटन */
+        .contact-btn.youtube {
+            background: linear-gradient(45deg, #ff0000, #ff5555);
+            border: none;
+        }
+        .contact-btn.youtube:hover {
+            background: linear-gradient(45deg, #ff5555, #ff0000);
+            transform: translateY(-2px);
+        }
+
+        /* आइकन्स के लिए एक्स्ट्रा स्टाइल्स */
+        .contact-btn i {
+            font-size: 18px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:hover i {
+            transform: scale(1.1);
+        }
+
+        .section-spacing {
+            margin: 60px 0;  /* ऊपर और नीचे 60px की स्पेसिंग */
+        }
+
+        /* इनपुट फील्ड्स के लिए स्टाइल */
+        input {
+            transition: all 0.3s ease;
+        }
+
+        /* जब यूजर टाइप करे तो टेक्स्ट का कलर */
+        input:not(:placeholder-shown) {
+            color: #ffd700; /* सुनहरा रंग */
+            font-weight: 500;
+        }
+
+        /* फोकस के समय बॉर्डर कलर */
+        input:focus {
+            border-color: #ffd700;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+
+        /* फोन नंबर प्रीफिक्स के साथ मैच करने के लिए */
+        .phone-input-container input[type="tel"]:not(:placeholder-shown) {
+            color: #ffd700;
+        }
+
+        /* चेकबॉक्स के लिए स्टाइल */
+        input[type="checkbox"]:checked + label {
+            color: #ffd700;
+        }
+
+        /* एरर स्टेट में कलर नहीं बदलेगा */
+        input.error:not(:placeholder-shown) {
+            color: #ff4444;
+        }
+
+        /* Continue to Payment बटन के लिए अपडेटेड स्टाइल्स */
+        button[type="submit"] {
+            background: linear-gradient(45deg, #ffd700, #ffb700);
+            color: #000;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            width: auto;
+            display: block;
+            margin: 30px auto;
+            min-width: 250px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* होवर इफेक्ट्स */
+        button[type="submit"]:not(:disabled):hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(45deg, #ffb700, #ffd700);
+        }
+
+        /* क्लिक इफेक्ट */
+        button[type="submit"]:not(:disabled):active {
+            transform: scale(0.98) translateY(1px);
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+        }
+
+        /* बटन आइकन के लिए स्टाइल्स */
+        button[type="submit"] i {
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        /* होवर पर आइकन एनिमेशन */
+        button[type="submit"]:not(:disabled):hover i {
+            transform: translateX(8px) scale(1.1);
+        }
+
+        /* डिसेबल्ड स्टेट */
+        button[type="submit"]:disabled {
+            background: linear-gradient(45deg, #cccccc, #999999);
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* मोबाइल के लिए रेस्पॉन्सिव स्टाइल्स */
+        @media screen and (max-width: 768px) {
+            button[type="submit"] {
+                font-size: 16px;
+                padding: 12px 25px;
+                min-width: 200px;
+                margin: 20px auto;
+            }
+            
+            button[type="submit"]:not(:disabled):hover {
+                transform: scale(1.03); /* मोबाइल पर छोटा स्केल */
+            }
+        }
+
+        /* BGMI ID इनपुट फील्ड के लिए स्टाइल्स */
+        input[placeholder="Enter BGMI ID"] {
+            font-family: monospace; /* फिक्स्ड-विड्थ फॉन्ट */
+            letter-spacing: 1px; /* अक्षरों के बीच स्पेस */
+            font-size: 16px;
+            padding: 10px 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Add these new mobile-friendly styles */
+        
+        /* Base styles for form elements */
+        input, 
+        button, 
+        .registration-box {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Update existing media queries */
+        @media screen and (max-width: 480px) {
+            /* Heading sizes */
+            .hero-content h1 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                margin: 12px 0;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+                margin: 10px 0;
+            }
+
+            h4 {
+                font-size: 1.1rem;
+            }
+
+            /* Player fields layout */
+            .player-fields {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            /* Input groups */
+            .input-group {
+                margin: 8px 0;
+            }
+
+            /* Registration box padding */
+            .registration-box {
+                padding: 12px;
+                margin: 8px 0;
+            }
+
+            /* Form groups */
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            /* Contact buttons */
+            .contact-options {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            /* Modal adjustments */
+            .modal-content {
+                width: 95%;
+                margin: 10px auto;
+                padding: 12px;
+            }
+
+            /* Terms and rules sections */
+            .term-item {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            /* Submit button */
+            button[type="submit"] {
+                padding: 12px;
+                font-size: 1rem;
+                min-width: auto;
+            }
+
+            /* Need help section */
+            .need-help {
+                padding: 10px;
+                margin: 6px;
+            }
+        }
+
+        /* Additional improvements for very small screens */
+        @media screen and (max-width: 320px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            input, 
+            button {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+
+            .phone-input-container .phone-prefix {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* वीडियो बैकग्राउंड के लिए अपडेटेड स्टाइल्स */
+        .registration-video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .registration-video-background video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* वीडियो ओवरले को भी अपडेट करें */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        /* मोबाइल डिवाइसेस के लिए एक्स्ट्रा एडजस्टमेंट्स */
+        @media screen and (max-width: 768px) {
+            .registration-video-background {
+                height: 100vh;
+                height: calc(var(--vh, 1vh) * 100); /* मोबाइल ब्राउज़र्स के लिए */
+            }
+            
+            .video-overlay {
+                height: 100vh;
+                height: calc(var(--vh, 1vh) * 100);
+            }
+        }
+
+        /* इनपुट फील्ड्स के लिए क्लियर बटन स्टाइल्स */
+        .input-group {
+            position: relative;
+        }
+
+        .clear-input {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+            display: none;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .input-group input:not(:placeholder-shown) + .clear-input {
+            display: block;
+        }
+
+        /* लाइव वैलिडेशन मैसेज स्टाइल्स */
+        .validation-message {
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+            color: #ff4444;
+        }
+
+        /* Hero सेक्शन के लिए अपडेटेड स्टाइल्स */
+        .hero {
+            position: relative;
+            height: 25vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 25vh;
+            z-index: -1;
+        }
+
+        .hero-video-background video {
+            width: 100%;
+            height: 25vh;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+            padding: 15px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 25vh;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        /* मोबाइल के लिए एक्स्ट्रा एडजस्टमेंट्स */
+        @media screen and (max-width: 480px) {
+            .hero {
+                height: 20vh;
+            }
+
+            .hero-video-background,
+            .hero-video-background video,
+            .hero-overlay {
+                height: 20vh;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+
+        /* छोटे मोबाइल स्क्रीन्स के लिए */
+        @media screen and (max-width: 320px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* मोबाइल व्यू में बैक बटन */
+        @media screen and (max-width: 768px) {
+            .close::before {
+                content: "Back";
+                font-size: 16px;
+                padding: 8px 15px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+            }
+            .close {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="home" class="hero">
+        <div class="hero-video-background">
+            <video autoplay muted loop playsinline>
+                <source src="hero-bg.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>CSBT E-Sports Tournament</h1>
+            <p>Registration Form</p>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <!-- वीडियो बैकग्राउंड कंटेनर -->
+        <div class="registration-video-background">
+            <video autoplay muted loop playsinline>
+                <source src="bg.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <!-- बाकी कंटेंट -->
+        <h2>Team Registration</h2>
+        <form id="registration-form" onsubmit="return validateForm(event)">
+            <!-- Basic Info Box -->
+            <div class="registration-box">
+                <h3>Basic Information</h3>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" 
+                               placeholder="Squad Name *" 
+                               required 
+                               autocapitalize="off" 
+                               autocorrect="off"
+                               spellcheck="false">
+                        <i class="fas fa-times clear-input"></i>
+                        <div class="validation-message">Please enter a valid squad name</div>
+                    </div>
+                    <div class="email-input-container">
+                        <input type="email" 
+                               placeholder="Email *" 
+                               required
+                               autocapitalize="off" 
+                               autocorrect="off"
+                               spellcheck="false">
+                        <i class="fas fa-times clear-input"></i>
+                        <div class="validation-message">Please enter a valid email address</div>
+                    </div>
+                    <div class="phone-input-container input-group">
+                        <span class="phone-prefix">+91</span>
+                        <input type="tel" 
+                               placeholder="Phone Number *" 
+                               required
+                               pattern="[0-9]{10}"
+                               maxlength="10"
+                               oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                               >
+                        <i class="fas fa-times clear-input"></i>
+                        <div class="validation-message">Please enter a valid 10-digit phone number</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Info Box -->
+            <div class="registration-box">
+                <h3>Team Details</h3>
+                
+                <!-- Team Leader -->
+                <div class="player-info leader-info">
+                    <h4>Team Leader *</h4>
+                    <div class="player-fields">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter Full Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>In-Game Name</label>
+                            <input type="text" placeholder="Enter In-Game Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>BGMI ID</label>
+                            <input type="text" 
+                                   placeholder="Enter BGMI ID" 
+                                   pattern="[0-9]{11}" 
+                                   maxlength="11"
+                                   minlength="11"
+                                   size="11"
+                                   style="width: 100%;"
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                   required>
+                            <div class="error-message">BGMI ID must be 11 digits</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Players (Core Players हेडिंग हटा दिया) -->
+                <div class="player-info">
+                    <span class="player-number">Player 1</span>
+                    <div class="player-fields">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter Full Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>In-Game Name</label>
+                            <input type="text" placeholder="Enter In-Game Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>BGMI ID</label>
+                            <input type="text" 
+                                   placeholder="Enter BGMI ID" 
+                                   pattern="[0-9]{11}" 
+                                   maxlength="11"
+                                   minlength="11"
+                                   size="11"
+                                   style="width: 100%;"
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                   required>
+                            <div class="error-message">BGMI ID must be 11 digits</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="player-info">
+                    <span class="player-number">Player 2</span>
+                    <div class="player-fields">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter Full Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>In-Game Name</label>
+                            <input type="text" placeholder="Enter In-Game Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>BGMI ID</label>
+                            <input type="text" 
+                                   placeholder="Enter BGMI ID" 
+                                   pattern="[0-9]{11}" 
+                                   maxlength="11"
+                                   minlength="11"
+                                   size="11"
+                                   style="width: 100%;"
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                   required>
+                            <div class="error-message">BGMI ID must be 11 digits</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="player-info">
+                    <span class="player-number">Player 3</span>
+                    <div class="player-fields">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter Full Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>In-Game Name</label>
+                            <input type="text" placeholder="Enter In-Game Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>BGMI ID</label>
+                            <input type="text" 
+                                   placeholder="Enter BGMI ID" 
+                                   pattern="[0-9]{11}" 
+                                   maxlength="11"
+                                   minlength="11"
+                                   size="11"
+                                   style="width: 100%;"
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                   required>
+                            <div class="error-message">BGMI ID must be 11 digits</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Substitute -->
+                <div class="player-info substitute-info">
+                    <h4>Substitute Player</h4>
+                    <div class="player-fields">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter Full Name">
+                        </div>
+                        <div class="input-group">
+                            <label>In-Game Name</label>
+                            <input type="text" placeholder="Enter In-Game Name">
+                        </div>
+                        <div class="input-group">
+                            <label>BGMI ID</label>
+                            <input type="text" 
+                                   placeholder="Enter BGMI ID" 
+                                   pattern="[0-9]{11}" 
+                                   maxlength="11"
+                                   minlength="11"
+                                   size="11"
+                                   style="width: 100%;"
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                   required>
+                            <div class="error-message">BGMI ID must be 11 digits</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terms and Conditions Checkboxes -->
+            <div class="terms-section">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms" class="terms-link" onclick="openModal('termsModal')">I agree to the Terms and Conditions *</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="rules" required>
+                    <label for="rules" class="terms-link" onclick="openModal('rulesModal')">I agree to follow all Tournament Rules and Regulations *</label>
+                </div>
+            </div>
+
+            <!-- नया एरर मैसेज डिव -->
+            <div id="formErrorMessage" class="error-message" style="text-align: center; margin: 10px 0; display: none;">
+                Please fill all required fields to continue
+            </div>
+
+            <button type="submit" id="submitBtn" disabled>
+                Continue to Payment <i class="fas fa-arrow-right"></i>
+            </button>
+
+            <!-- स्पेसिंग के लिए नया डिव -->
+            <div class="section-spacing"></div>
+
+            <!-- Need Help Section -->
+            <div class="need-help">
+                <h3>Need Help?</h3>
+                <div class="contact-options">
+                    <a href="https://t.me/CSBT_Esports" class="contact-btn telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                        Telegram Support
+                    </a>
+                    <a href="mailto:csbtesports@gmail.com" class="contact-btn email">
+                        <i class="far fa-envelope"></i>
+                        Email Support
+                    </a>
+                    <a href="https://www.instagram.com/csbt_esports/" class="contact-btn instagram">
+                        <i class="fab fa-instagram"></i>
+                        Instagram
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCpQUoGyGSPX0Vj-Qz_IBnlQ" class="contact-btn youtube">
+                        <i class="fab fa-youtube"></i>
+                        YouTube
+                    </a>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 CSBT E-Sports Tournament. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Modal Functions -->
+    <script>
+        const form = document.getElementById('registration-form');
+        const submitBtn = document.getElementById('submitBtn');
+        const termsCheckbox = document.getElementById('terms');
+        const rulesCheckbox = document.getElementById('rules');
+
+        // Function to check if all required fields are filled
+        function checkFormValidity() {
+            const requiredInputs = form.querySelectorAll('input[required]');
+            let allFilled = true;
+            const formErrorMessage = document.getElementById('formErrorMessage');
+
+            // Check all required inputs
+            requiredInputs.forEach(input => {
+                if (!input.value) {
+                    allFilled = false;
+                }
+            });
+
+            // Check if both checkboxes are checked
+            if (!termsCheckbox.checked || !rulesCheckbox.checked) {
+                allFilled = false;
+            }
+
+            // Enable/disable submit button and show/hide error message
+            submitBtn.disabled = !allFilled;
+            formErrorMessage.style.display = allFilled ? 'none' : 'block';
+            
+            // Change button appearance based on state
+            if (allFilled) {
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+            } else {
+                submitBtn.style.opacity = '0.5';
+                submitBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+        // Add event listeners to all form inputs
+        form.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', checkFormValidity);
+            input.addEventListener('change', checkFormValidity);
+        });
+
+        // Add event listeners to checkboxes
+        termsCheckbox.addEventListener('change', checkFormValidity);
+        rulesCheckbox.addEventListener('change', checkFormValidity);
+
+        // Initial check when page loads
+        checkFormValidity();
+
+        function openModal(modalId) {
+            // मोबाइल डिवाइस चेक करें
+            if (window.innerWidth <= 768) {
+                // मोबाइल के लिए नया पेज खोलें
+                if (modalId === 'termsModal') {
+                    window.location.href = 'terms.html';
+                } else if (modalId === 'rulesModal') {
+                    window.location.href = 'rules.html';
+                }
+            } else {
+                // डेस्कटॉप के लिए मौजूदा मोडल खोलें
+                document.getElementById(modalId).style.display = "block";
+                document.body.style.overflow = "hidden";
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto"; // Enable scroll
+        }
+
+        // Modal close when clicking outside
+        window.onclick = function(event) {
+            if (event.target.className.includes('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        function validateForm(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            // सभी required फील्ड्स की वैलिडेशन
+            const requiredInputs = form.querySelectorAll('input[required]');
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.classList.add('error');
+                    isValid = false;
+                } else {
+                    input.classList.remove('error');
+                }
+            });
+
+            // ईमेल वैलिडेशन
+            const email = document.querySelector('input[type="email"]');
+            const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+            if (!emailPattern.test(email.value)) {
+                email.classList.add('error');
+                isValid = false;
+            }
+
+            // फोन नंबर वैलिडेशन
+            const phone = document.querySelector('input[type="tel"]');
+            if (phone.value.length !== 10) {
+                phone.classList.add('error');
+                isValid = false;
+            }
+
+            // BGMI ID वैलिडेशन
+            const bgmiInputs = document.querySelectorAll('input[placeholder="Enter BGMI ID"]');
+            bgmiInputs.forEach(input => {
+                if (input.hasAttribute('required') && input.value.length !== 11) {
+                    input.classList.add('error');
+                    isValid = false;
+                }
+            });
+
+            // चेकबॉक्स वैलिडेशन
+            if (!termsCheckbox.checked || !rulesCheckbox.checked) {
+                isValid = false;
+            }
+
+            // अगर सभी वैलिडेशन पास हो गए हैं
+            if (isValid) {
+                // फॉर्म रीसेट करें
+                form.reset();
+                
+                // बटन को डिसेबल करें
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.5';
+                submitBtn.style.cursor = 'not-allowed';
+                
+                // एरर मैसेज हटाएं
+                document.getElementById('formErrorMessage').style.display = 'none';
+                
+                // सभी एरर क्लासेस हटाएं
+                form.querySelectorAll('.error').forEach(element => {
+                    element.classList.remove('error');
+                });
+                
+                // सफल सबमिशन पर पेमेंट पेज पर रीडायरेक्ट करें
+                window.location.href = 'payment.html';
+            } else {
+                // एरर मैसेज दिखाएं
+                document.getElementById('formErrorMessage').style.display = 'block';
+            }
+
+            return isValid;
+        }
+
+        // सबमिट बटन पर क्लिक इवेंट
+        document.getElementById('submitBtn').addEventListener('click', function(event) {
+            validateForm(event);
+        });
+
+        // फॉर्म इनपुट्स पर चेंज इवेंट
+        form.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', function() {
+                // एरर क्लास हटाएं जब यूजर टाइप करे
+                this.classList.remove('error');
+                // फॉर्म वैलिडिटी चेक करें
+                checkFormValidity();
+            });
+        });
+
+        // मोबाइल ब्राउज़र्स के लिए viewport height को सही करें
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        // पेज लोड और रीसाइज़ पर vh अपडेट करें
+        window.addEventListener('load', setVH);
+        window.addEventListener('resize', setVH);
+
+        // क्लियर बटन फंक्शनैलिटी
+        document.querySelectorAll('.clear-input').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                input.value = '';
+                input.focus();
+                this.style.display = 'none';
+            });
+        });
+
+        // लाइव वैलिडेशन
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', function() {
+                const validationMessage = this.parentElement.querySelector('.validation-message');
+                if (this.validity.valid) {
+                    validationMessage.style.display = 'none';
+                } else {
+                    validationMessage.style.display = 'block';
+                }
+            });
+        });
+    </script>
+
+    <!-- Terms and Conditions Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content dark-theme">
+            <span class="close" onclick="closeModal('termsModal')">&times;</span>
+            <h2>Terms & Conditions for Payment</h2>
+            <div class="modal-body">
+                <div class="numbered-list">
+                    <div class="term-item">
+                        <div class="term-number">1</div>
+                        <div class="term-content">
+                            <h4>Payment Deadline</h4>
+                            <p>Registration fees must be paid before the deadline. Late payments will not be accepted, and entry will be denied.</p>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">2</div>
+                        <div class="term-content">
+                            <h4>Correct Payment Details</h4>
+                            <p>Players must ensure they enter the correct payment details and transaction ID while registering. Any incorrect details may result in disqualification.</p>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">3</div>
+                        <div class="term-content">
+                            <h4>Payment Confirmation</h4>
+                            <p>Once the payment is successfully made, players will receive a confirmation message or email. If not received within 24 hours, players must contact support with proof of payment.</p>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">4</div>
+                        <div class="term-content">
+                            <h4>Receipt of Payment</h4>
+                            <p>Players must keep a screenshot or proof of payment until the tournament begins, as it may be required for verification.</p>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">5</div>
+                        <div class="term-content">
+                            <h4>Non-Refundable Payment</h4>
+                            <p>The registration fee is non-refundable under any circumstances, including disqualification, absence, or withdrawal from the tournament.</p>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">6</div>
+                        <div class="term-content">
+                            <h4>No Transfers</h4>
+                            <p>Registration fees cannot be transferred to another tournament, player, or event.</p>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">7</div>
+                        <div class="term-content">
+                            <h4>Fraudulent Transactions</h4>
+                            <p>Any fraudulent or unauthorized transactions will lead to immediate disqualification and potential legal action.</p>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">8</div>
+                        <div class="term-content">
+                            <h4>Tournament Cancellation</h4>
+                            <p>In case of event cancellation by CSBT Esports, players will be eligible for a full refund, which will be processed within 7-10 working days.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="rulesModal" class="modal">
+        <div class="modal-content dark-theme">
+            <span class="close" onclick="closeModal('rulesModal')">&times;</span>
+            <h2>Rules & Regulations - CSBT Esports BGMI Tournament</h2>
+            <div class="modal-body">
+                <p>To ensure a fair and competitive environment, all players must adhere to the following rules:</p>
+                
+                <div class="numbered-list">
+                    <div class="term-item">
+                        <div class="term-number">1</div>
+                        <div class="term-content">
+                            <h4>General Rules</h4>
+                            <ul class="rules-list">
+                                <li>Players must register with their correct in-game name and ID.</li>
+                                <li>Only registered players are allowed to participate.</li>
+                                <li>Players must join the lobby on time; late entries will not be entertained.</li>
+                                <li>The use of emulators, hacks, scripts, or third-party software is strictly prohibited.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">2</div>
+                        <div class="term-content">
+                            <h4>Match Rules</h4>
+                            <ul class="rules-list">
+                                <li>Players must play on the official BGMI app.</li>
+                                <li>Teaming, hacking, or cheating will lead to immediate disqualification.</li>
+                                <li>Intentional disconnections will not be considered for rematches.</li>
+                                <li>If a match is interrupted due to server issues, it will be rescheduled.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">3</div>
+                        <div class="term-content">
+                            <h4>Scoring & Ranking</h4>
+                            <ul class="rules-list">
+                                <li>The tournament will follow a points-based ranking system.</li>
+                                <li>Final ranking will be determined based on kill points & placement points.</li>
+                            </ul>
+                            
+                            <h5>Placement Points Distribution:</h5>
+                            <div class="points-table">
+                                <div class="points-row">1st = 15 points</div>
+                                <div class="points-row">2nd = 12 points</div>
+                                <div class="points-row">3rd = 10 points</div>
+                                <div class="points-row">4th = 8 points</div>
+                                <div class="points-row">5th = 6 points</div>
+                                <div class="points-row">6th-7th = 4 points</div>
+                                <div class="points-row">8th-9th = 2 points</div>
+                                <div class="points-row">10th-12th = 1 point</div>
+                            </div>
+
+                            <p>Kill Points: Each kill awards 1 point to the team.</p>
+                            
+                            <h5>Awards:</h5>
+                            <ul class="awards-list">
+                                <li>MVP Award: Player with the most kills in the final match.</li>
+                                <li>Kill Leader: Player with the highest kills throughout the tournament.</li>
+                                <li>Player of the Season: Awarded based on overall performance.</li>
+                            </ul>
+                            
+                            <p>Tiebreaker: In case of a tie, the team with more kill points will be ranked higher.</p>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">4</div>
+                        <div class="term-content">
+                            <h4>Conduct & Fair Play</h4>
+                            <ul class="rules-list">
+                                <li>Players must maintain sportsmanship and respect towards opponents and organizers.</li>
+                                <li>Toxic behavior, abusive language, or harassment will result in a ban.</li>
+                                <li>Any attempt to manipulate results (e.g., teaming) will lead to disqualification.</li>
+                                <li>Players must follow the instructions of tournament administrators.</li>
+                                <li>Disputes must be reported immediately to tournament officials with proper evidence.</li>
+                                <li>Decisions made by tournament officials are final and binding.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">5</div>
+                        <div class="term-content">
+                            <h4>Streaming & Content</h4>
+                            <ul class="rules-list">
+                                <li>Players must seek permission before streaming tournament matches.</li>
+                                <li>Organizers hold the right to stream, record, and use gameplay content for promotional purposes.</li>
+                                <li>Players streaming matches must set a minimum delay of 5 minutes.</li>
+                                <li>Stream sniping is strictly prohibited and will result in immediate disqualification.</li>
+                                <li>Players must maintain professional conduct during streams and interviews.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="term-item">
+                        <div class="term-number">6</div>
+                        <div class="term-content">
+                            <h4>Technical Requirements</h4>
+                            <ul class="rules-list">
+                                <li>Players must have a stable internet connection.</li>
+                                <li>All players must subscribe to the tournament YouTube channel for communication.</li>
+                                <li>Players must record their gameplay for verification if required.</li>
+                                <li>Device specifications must meet BGMI's minimum requirements.</li>
+                                <li>Players are responsible for their own technical issues.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rules-footer">
+                    <p>Failure to follow these rules may result in warnings, disqualifications, or bans. Play fair, and may the best team win! 🚀</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
